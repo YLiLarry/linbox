@@ -35,67 +35,60 @@
 #ifndef __LINBOX_matrix_densematrix_blas_transposed_matrix_H
 #define __LINBOX_matrix_densematrix_blas_transposed_matrix_H
 
-
 namespace LinBox
 { /*  Transposed Matrix */
-	/*! TransposedBlasMatrix.
+/*! TransposedBlasMatrix.
 	 * NO DOC
 	 */
-	template< class Matrix >
-	class TransposedBlasMatrix {
+template <class Matrix>
+class TransposedBlasMatrix
+{
 
-	public:
-
-		/*! NO DOC
+  public:
+	/*! NO DOC
 		 * @param Mat
 		 */
-		TransposedBlasMatrix ( Matrix& Mat ) :
-			_Mat(Mat)
-		{}
+	TransposedBlasMatrix(Matrix &Mat) : _Mat(Mat)
+	{
+	}
 
-		/*! NO DOC
+	/*! NO DOC
 		*/
-		Matrix& getMatrix() const
-		{
-			return _Mat;
-		}
+	Matrix &getMatrix() const
+	{
+		return _Mat;
+	}
 
-	protected:
-		Matrix& _Mat; //!< NO DOC
-	};
+  protected:
+	Matrix &_Mat; //!< NO DOC
+};
 
-	/*! TransposedBlasMatrix.
+/*! TransposedBlasMatrix.
 	 * NO DOC
 	 */
-#if !defined(__INTEL_COMPILER) && !defined(__CUDACC__) & !defined(__clang__)
-	template <>
-#endif
-	template< class Matrix >
-	class TransposedBlasMatrix< TransposedBlasMatrix< Matrix > > : public Matrix {
+template <class Matrix>
+class TransposedBlasMatrix<TransposedBlasMatrix<Matrix>> : public Matrix
+{
 
-	public:
-		/*! TransposedBlasMatrix.
+  public:
+	/*! TransposedBlasMatrix.
 		 * NO DOC
 		 */
-		TransposedBlasMatrix ( Matrix& Mat ) :
-			Matrix(Mat)
-		{}
+	TransposedBlasMatrix(Matrix &Mat) : Matrix(Mat)
+	{
+	}
 
-		/*! TransposedBlasMatrix.
+	/*! TransposedBlasMatrix.
 		 * NO DOC
 		 */
-		TransposedBlasMatrix ( const Matrix& Mat ) :
-			Matrix(Mat)
-		{}
+	TransposedBlasMatrix(const Matrix &Mat) : Matrix(Mat)
+	{
+	}
+};
 
-	};
-
-
-}
+} // namespace LinBox
 
 #endif // __LINBOX_matrix_densematrix_blas_transposed_matrix_H
-
-
 
 // Local Variables:
 // mode: C++
